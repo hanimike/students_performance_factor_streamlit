@@ -7,6 +7,17 @@ import numpy as np
 import scipy as sp
 # STREAMLIT
 st.title("Students Performance Factor")
+
+
+file_path = "students_performance_factor.csv"
+
+with open(file_path, "rb") as f:
+    st.download_button(
+        label="Download Dataset",
+        data=f,
+        file_name="students_performance_factor.csv",
+        mime="text/csv"
+    )
         # LOAD DATA
 st.header("Load Dataset")
 data = pd.read_csv("students_performance_factor.csv")
@@ -88,5 +99,7 @@ fig = px.histogram( data, x="Distance_from_Home", nbins=3,
                    title="Distribution of Distance from Home", 
                    labels={"Distance_from_Home": "Distance from Home (0=Far, 1=Moderate, 2=Near)"} ) 
 st.plotly_chart(fig, use_container_width=True)
+
+
 
 
